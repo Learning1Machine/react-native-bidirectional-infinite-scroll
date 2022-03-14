@@ -170,8 +170,7 @@ export const BidirectionalFlatList = (React.forwardRef(
 
       // Check if scroll has reached either start of end of list.
       const isScrollAtStart = offset < onStartReachedThreshold;
-      const isScrollAtEnd =
-        contentLength - visibleLength - offset < onEndReachedThreshold;
+      const isScrollAtEnd = (offset > onEndReachedThreshold) && (contentLength - visibleLength - offset < onEndReachedThreshold);
 
       if (isScrollAtStart) {
         maybeCallOnStartReached();
