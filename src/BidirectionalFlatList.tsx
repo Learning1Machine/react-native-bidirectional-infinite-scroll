@@ -215,7 +215,7 @@ export const BidirectionalFlatList = (React.forwardRef(
       //   }
       // }
 
-      // if (!onEndReachedInProgress) return null;
+      if (!onEndReachedInProgress) return null;
 
       // if (FooterLoadingIndicator) {
       //   console.log()
