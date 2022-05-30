@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useRef, useState } from 'react';
+import React, { MutableRefObject, useRef, useState} from 'react';
 import {
   ActivityIndicator,
   FlatList as FlatListType,
@@ -181,7 +181,7 @@ export const BidirectionalFlatList = (React.forwardRef(
       }
     };
 
-    const renderHeaderLoadingIndicator = () => {
+    function renderHeaderLoadingIndicator() {
       if (!showDefaultLoadingIndicators) {
         if (ListHeaderComponent) {
           return <ListHeaderComponent />;
@@ -204,19 +204,23 @@ export const BidirectionalFlatList = (React.forwardRef(
     };
 
     const renderFooterLoadingIndicator = () => {
-      if (!showDefaultLoadingIndicators) {
-        if (ListFooterComponent) {
-          return <ListFooterComponent />;
-        } else {
-          return null;
-        }
-      }
+      // This wasn't being useful for us since we're only using the Footer
+      // to show the ActivityIndicator when loading older messages
 
-      if (!onEndReachedInProgress) return null;
+      // if (!showDefaultLoadingIndicators) {
+      //   if (ListFooterComponent) {
+      //     return <ListFooterComponent />;
+      //   } else {
+      //     return null;
+      //   }
+      // }
 
-      if (FooterLoadingIndicator) {
-        return <FooterLoadingIndicator />;
-      }
+      // if (!onEndReachedInProgress) return null;
+
+      // if (FooterLoadingIndicator) {
+      //   console.log()
+      //   return <FooterLoadingIndicator />;
+      // }
 
       return (
         <View style={styles.indicatorContainer}>
@@ -231,8 +235,9 @@ export const BidirectionalFlatList = (React.forwardRef(
           {...props}
           ref={ref}
           progressViewOffset={50}
-          ListHeaderComponent={renderHeaderLoadingIndicator}
-          ListFooterComponent={renderFooterLoadingIndicator}
+          // Not sure why this was without the (), but it was causing unecessary rerenders
+          ListHeaderComponent={renderHeaderLoadingIndicator()} 
+          ListFooterComponent={renderFooterLoadingIndicator()}
           onEndReached={null}
           onScroll={handleScroll}
           maintainVisibleContentPosition={{
