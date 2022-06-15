@@ -53,11 +53,11 @@ export type Props<T> = Omit<
   /** Custom UI component for header inline loading indicator */
   HeaderLoadingIndicator?: React.ComponentType;
   /** Custom UI component for footer inline loading indicator */
-  FooterLoadingIndicator?: React.ComponentType;
+  // FooterLoadingIndicator?: React.ComponentType;
   /** Custom UI component for header indicator of FlatList. Only used when `showDefaultLoadingIndicators` is false */
   ListHeaderComponent?: React.ComponentType;
   /** Custom UI component for footer indicator of FlatList. Only used when `showDefaultLoadingIndicators` is false */
-  ListFooterComponent?: React.ComponentType;
+  // ListFooterComponent?: React.ComponentType;
 };
 /**
  * Note:
@@ -82,10 +82,10 @@ export const BidirectionalFlatList = (React.forwardRef(
       autoscrollToTopThreshold = 100,
       data,
       enableAutoscrollToTop,
-      FooterLoadingIndicator,
+      // FooterLoadingIndicator,
       HeaderLoadingIndicator,
       ListHeaderComponent,
-      ListFooterComponent,
+      // ListFooterComponent,
       onEndReached = () => Promise.resolve(),
       onEndReachedThreshold = 10,
       onScroll,
